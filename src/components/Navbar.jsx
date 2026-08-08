@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, Code2, Palette, Sun } from 'lucide-react';
+import { Sparkles, Menu, X, Code2, Palette, Bot, Cpu } from 'lucide-react';
 import priyanshuPhoto from '../assets/priyanshu.jpg';
 
 export default function Navbar({ activeTheme, setActiveTheme }) {
@@ -16,10 +16,10 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
   }, []);
 
   const themes = [
-    { id: 'light-cyan', label: 'Ocean Cyan', color: '#0284c7' },
-    { id: 'light-indigo', label: 'Royal Indigo', color: '#4f46e5' },
-    { id: 'light-emerald', label: 'Fresh Emerald', color: '#059669' },
-    { id: 'light-coral', label: 'Sunset Coral', color: '#ea580c' }
+    { id: 'ai-cyber', label: 'Cyber Neon', color: '#00f2fe' },
+    { id: 'ai-matrix', label: 'Matrix Emerald', color: '#00ff9d' },
+    { id: 'ai-quantum', label: 'Quantum Purple', color: '#c084fc' },
+    { id: 'ai-solar', label: 'Solar Amber', color: '#fbbf24' }
   ];
 
   const navLinks = [
@@ -38,10 +38,9 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
         right: 0,
         zIndex: 100,
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
+        background: scrolled ? 'rgba(4, 7, 20, 0.88)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(15, 23, 42, 0.08)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.04)' : 'none'
+        borderBottom: scrolled ? '1px solid rgba(0, 242, 254, 0.15)' : '1px solid transparent'
       }}
     >
       <div
@@ -67,7 +66,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                 objectFit: 'cover',
                 objectPosition: 'center 15%',
                 border: '2px solid var(--primary)',
-                boxShadow: '0 0 12px var(--primary-glow)'
+                boxShadow: '0 0 15px var(--primary-glow)'
               }}
             />
           </div>
@@ -81,8 +80,8 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  backgroundColor: '#10b981',
-                  boxShadow: '0 0 8px #10b981'
+                  backgroundColor: '#00f2fe',
+                  boxShadow: '0 0 10px #00f2fe'
                 }}
               />
               Python Developer | AI Engineer
@@ -116,19 +115,19 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
           <div style={{ position: 'relative' }}>
             <button
               onClick={() => setThemeDropdown(!themeDropdown)}
-              title="Change Light Palette"
+              title="Change AI Cyber Palette"
               style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: '#ffffff',
-                border: '1px solid rgba(15, 23, 42, 0.12)',
+                background: 'rgba(0, 242, 254, 0.08)',
+                border: '1px solid var(--border-glow)',
                 color: 'var(--primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'all 0.2s ease',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+                boxShadow: '0 0 15px var(--primary-glow)'
               }}
             >
               <Palette size={20} />
@@ -140,11 +139,11 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   position: 'absolute',
                   right: 0,
                   top: '50px',
-                  background: '#ffffff',
-                  border: '1px solid rgba(15, 23, 42, 0.12)',
+                  background: 'var(--bg-dark)',
+                  border: '1px solid var(--border-glow)',
                   borderRadius: 'var(--radius-md)',
                   padding: '12px',
-                  boxShadow: '0 12px 30px rgba(15, 23, 42, 0.12)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.9), var(--shadow-glow)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
@@ -153,7 +152,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                 }}
               >
                 <div style={{ fontSize: '0.75rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px', fontWeight: 700 }}>
-                  Light Palette
+                  AI Cyber Palette
                 </div>
                 {themes.map((t) => (
                   <button
@@ -168,7 +167,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                       gap: '10px',
                       padding: '8px 12px',
                       borderRadius: 'var(--radius-sm)',
-                      background: activeTheme === t.id ? 'rgba(2, 132, 199, 0.08)' : 'transparent',
+                      background: activeTheme === t.id ? 'rgba(0, 242, 254, 0.12)' : 'transparent',
                       color: 'var(--text-main)',
                       fontSize: '0.875rem',
                       textAlign: 'left'
@@ -180,7 +179,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                         height: '12px',
                         borderRadius: '50%',
                         backgroundColor: t.color,
-                        boxShadow: `0 0 6px ${t.color}`
+                        boxShadow: `0 0 10px ${t.color}`
                       }}
                     />
                     {t.label}
@@ -214,8 +213,8 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
       {mobileMenuOpen && (
         <div
           style={{
-            background: '#ffffff',
-            borderBottom: '1px solid rgba(15, 23, 42, 0.12)',
+            background: 'var(--bg-dark)',
+            borderBottom: '1px solid var(--border-glow)',
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',

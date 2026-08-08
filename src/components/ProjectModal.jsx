@@ -11,8 +11,8 @@ export default function ProjectModal({ project, onClose }) {
         position: 'fixed',
         inset: 0,
         zIndex: 200,
-        background: 'rgba(15, 23, 42, 0.65)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(4, 7, 20, 0.85)',
+        backdropFilter: 'blur(14px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,10 +26,10 @@ export default function ProjectModal({ project, onClose }) {
           maxWidth: '750px',
           maxHeight: '90vh',
           overflowY: 'auto',
-          background: '#ffffff',
+          background: '#070c1e',
           border: '1px solid var(--border-glow)',
           borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 25px 60px rgba(0,0,0,0.25)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.85), var(--shadow-glow)',
           padding: '32px',
           position: 'relative'
         }}
