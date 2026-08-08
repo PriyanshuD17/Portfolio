@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Terminal, CheckCircle2, Cpu, Zap, Star, Mail, MapPin, Phone, FileText, Bot } from 'lucide-react';
+import { ArrowRight, Terminal, CheckCircle2, Cpu, Zap, Star, Mail, MapPin, Phone, FileText, Bot, Waves } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function Hero() {
@@ -42,7 +42,7 @@ export default function Hero() {
           {/* Left Column: Priyanshu's Intro */}
           <div>
             <div className="section-tag">
-              <Bot size={16} /> Python & Applied AI Engineer
+              <Waves size={16} /> Python & Applied AI Engineer
             </div>
 
             <h1

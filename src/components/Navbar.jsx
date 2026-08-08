@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, Code2, Palette, FileText } from 'lucide-react';
+import { Sparkles, Menu, X, Code2, Palette, Waves, Compass } from 'lucide-react';
 
 export default function Navbar({ activeTheme, setActiveTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -15,10 +15,10 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
   }, []);
 
   const themes = [
-    { id: 'cyan', label: 'Cyber Cyan', color: '#38bdf8' },
-    { id: 'violet', label: 'Neon Violet', color: '#c084fc' },
-    { id: 'emerald', label: 'Emerald Glow', color: '#34d399' },
-    { id: 'amber', label: 'Solar Amber', color: '#fbbf24' }
+    { id: 'aquatic', label: 'Electric Aqua', color: '#00f2fe' },
+    { id: 'bioluminescent', label: 'Bioluminescent', color: '#00f5d4' },
+    { id: 'coral', label: 'Coral Reef', color: '#ff6b6b' },
+    { id: 'abyss', label: 'Abyss Indigo', color: '#3a86ff' }
   ];
 
   const navLinks = [
@@ -37,9 +37,9 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
         right: 0,
         zIndex: 100,
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(7, 9, 14, 0.88)' : 'transparent',
+        background: scrolled ? 'rgba(3, 8, 20, 0.88)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent'
+        borderBottom: scrolled ? '1px solid rgba(0, 242, 254, 0.15)' : '1px solid transparent'
       }}
     >
       <div
@@ -63,12 +63,12 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#000',
+              color: '#030814',
               fontWeight: 'bold',
-              boxShadow: '0 0 15px var(--primary-glow)'
+              boxShadow: '0 0 20px var(--primary-glow)'
             }}
           >
-            <Code2 size={22} />
+            <Waves size={22} />
           </div>
           <div>
             <span style={{ fontSize: '1.25rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text">
@@ -80,8 +80,8 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  backgroundColor: '#10b981',
-                  boxShadow: '0 0 8px #10b981'
+                  backgroundColor: '#00f2fe',
+                  boxShadow: '0 0 10px #00f2fe'
                 }}
               />
               Python Developer | AI Engineer
@@ -101,7 +101,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                 fontSize: '0.95rem',
                 transition: 'color 0.2s ease'
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-main)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
               {link.name}
@@ -115,18 +115,19 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
           <div style={{ position: 'relative' }}>
             <button
               onClick={() => setThemeDropdown(!themeDropdown)}
-              title="Change Accent Color"
+              title="Change Aquatic Accent Palette"
               style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--border-subtle)',
+                background: 'rgba(0, 242, 254, 0.08)',
+                border: '1px solid var(--border-glow)',
                 color: 'var(--primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                boxShadow: '0 0 12px var(--primary-glow)'
               }}
             >
               <Palette size={20} />
@@ -139,19 +140,19 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   right: 0,
                   top: '50px',
                   background: 'var(--bg-dark)',
-                  border: '1px solid var(--border-subtle)',
+                  border: '1px solid var(--border-glow)',
                   borderRadius: 'var(--radius-md)',
                   padding: '12px',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.8), var(--shadow-glow)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
-                  minWidth: '160px',
+                  minWidth: '170px',
                   zIndex: 110
                 }}
               >
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>
-                  Accent Theme
+                <div style={{ fontSize: '0.75rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px', fontWeight: 700 }}>
+                  Oceanic Palette
                 </div>
                 {themes.map((t) => (
                   <button
@@ -166,7 +167,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                       gap: '10px',
                       padding: '8px 12px',
                       borderRadius: 'var(--radius-sm)',
-                      background: activeTheme === t.id ? 'rgba(255,255,255,0.08)' : 'transparent',
+                      background: activeTheme === t.id ? 'rgba(0, 242, 254, 0.12)' : 'transparent',
                       color: 'var(--text-main)',
                       fontSize: '0.875rem',
                       textAlign: 'left'
@@ -178,7 +179,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                         height: '12px',
                         borderRadius: '50%',
                         backgroundColor: t.color,
-                        boxShadow: `0 0 8px ${t.color}`
+                        boxShadow: `0 0 10px ${t.color}`
                       }}
                     />
                     {t.label}
@@ -213,7 +214,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
         <div
           style={{
             background: 'var(--bg-dark)',
-            borderBottom: '1px solid var(--border-subtle)',
+            borderBottom: '1px solid var(--border-glow)',
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',

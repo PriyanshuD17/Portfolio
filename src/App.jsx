@@ -8,7 +8,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const [activeTheme, setActiveTheme] = useState('cyan');
+  const [activeTheme, setActiveTheme] = useState('aquatic');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', activeTheme);
