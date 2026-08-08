@@ -129,7 +129,7 @@ export default function Projects() {
         </div>
 
         {/* Project Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '28px' }}>
           {filteredProjects.map((project) => (
             <div
               key={project.id}

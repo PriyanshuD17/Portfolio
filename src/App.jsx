@@ -9,16 +9,23 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const [activeTheme, setActiveTheme] = useState('ai-cyber');
+  const [themeMode, setThemeMode] = useState('dark');
+  const [accentColor, setAccentColor] = useState('cyan');
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', activeTheme);
-  }, [activeTheme]);
+    document.documentElement.setAttribute('data-theme-mode', themeMode);
+    document.documentElement.setAttribute('data-accent', accentColor);
+  }, [themeMode, accentColor]);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      <NeuralBackground />
-      <Navbar activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
+      <NeuralBackground themeMode={themeMode} />
+      <Navbar
+        themeMode={themeMode}
+        setThemeMode={setThemeMode}
+        accentColor={accentColor}
+        setAccentColor={setAccentColor}
+      />
       <main style={{ flex: 1, position: 'relative', zIndex: 1 }}>
         <Hero />
         <About />

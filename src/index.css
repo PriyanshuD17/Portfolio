@@ -1,80 +1,116 @@
 /* ==========================================================================
-   PRIYANSHU DUBEY PORTFOLIO - CYBERNETIC AI DARK DESIGN SYSTEM
+   PRIYANSHU DUBEY PORTFOLIO - HYBRID LIGHT & DARK RESPONSIVE DESIGN SYSTEM
    ========================================================================== */
 
-:root {
-  /* Default Color Palette - AI Cyber Neon Cyan & Neural Violet */
+/* --------------------------------------------------------------------------
+   1. DARK MODE VARIABLES (DEFAULT)
+   -------------------------------------------------------------------------- */
+:root, [data-theme-mode="dark"] {
   --primary: #00f2fe;
   --primary-hover: #00c6ff;
-  --primary-glow: rgba(0, 242, 254, 0.4);
+  --primary-glow: rgba(0, 242, 254, 0.35);
   --secondary: #a855f7;
   --accent: #00f5d4;
 
-  /* AI Cyber Dark Backgrounds & Surfaces */
   --bg-dark: #040714;
-  --bg-card: rgba(10, 17, 36, 0.75);
-  --bg-card-hover: rgba(18, 28, 56, 0.88);
+  --bg-card: rgba(10, 17, 36, 0.78);
+  --bg-card-hover: rgba(18, 28, 56, 0.9);
   --bg-input: rgba(6, 12, 28, 0.95);
-  
-  /* Borders & Cyber Circuit Glows */
+  --bg-modal: #070c1e;
+  --bg-code: #090f26;
+
   --border-subtle: rgba(0, 242, 254, 0.15);
   --border-glow: rgba(0, 242, 254, 0.5);
 
-  /* Typography Colors */
   --text-main: #f0f6ff;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
 
-  /* Typography Fonts */
+  --shadow-glass: 0 12px 40px 0 rgba(0, 5, 20, 0.7);
+  --shadow-glow: 0 0 25px var(--primary-glow);
+}
+
+/* --------------------------------------------------------------------------
+   2. LIGHT MODE VARIABLES
+   -------------------------------------------------------------------------- */
+[data-theme-mode="light"] {
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-glow: rgba(2, 132, 199, 0.22);
+  --secondary: #6366f1;
+  --accent: #0d9488;
+
+  --bg-dark: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-card-hover: #ffffff;
+  --bg-input: #ffffff;
+  --bg-modal: #ffffff;
+  --bg-code: #0f172a;
+
+  --border-subtle: rgba(15, 23, 42, 0.1);
+  --border-glow: rgba(2, 132, 199, 0.4);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+
+  --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(2, 132, 199, 0.06);
+  --shadow-glow: 0 0 20px var(--primary-glow);
+}
+
+/* --------------------------------------------------------------------------
+   3. ACCENT PALETTES
+   -------------------------------------------------------------------------- */
+[data-accent="cyan"] {
+  --primary: #00f2fe;
+  --secondary: #a855f7;
+}
+[data-theme-mode="light"][data-accent="cyan"] {
+  --primary: #0284c7;
+  --secondary: #2563eb;
+}
+
+[data-accent="violet"] {
+  --primary: #c084fc;
+  --secondary: #f472b6;
+}
+[data-theme-mode="light"][data-accent="violet"] {
+  --primary: #7c3aed;
+  --secondary: #ec4899;
+}
+
+[data-accent="emerald"] {
+  --primary: #00f5d4;
+  --secondary: #00bbf9;
+}
+[data-theme-mode="light"][data-accent="emerald"] {
+  --primary: #059669;
+  --secondary: #0284c7;
+}
+
+[data-accent="amber"] {
+  --primary: #fbbf24;
+  --secondary: #f97316;
+}
+[data-theme-mode="light"][data-accent="amber"] {
+  --primary: #ea580c;
+  --secondary: #db2777;
+}
+
+/* --------------------------------------------------------------------------
+   4. GLOBAL BASE & RESET
+   -------------------------------------------------------------------------- */
+:root {
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Fira Code', monospace;
 
-  /* Shadows & Neural Grid Glow Effects */
-  --shadow-glass: 0 12px 40px 0 rgba(0, 5, 20, 0.7);
-  --shadow-glow: 0 0 30px var(--primary-glow);
-
-  /* Border Radii */
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 26px;
   --radius-full: 9999px;
 }
 
-/* AI Dark Theme Presets */
-[data-theme="ai-cyber"] {
-  --primary: #00f2fe;
-  --primary-hover: #00c6ff;
-  --primary-glow: rgba(0, 242, 254, 0.4);
-  --secondary: #a855f7;
-  --accent: #00f5d4;
-}
-
-[data-theme="ai-matrix"] {
-  --primary: #00ff9d;
-  --primary-hover: #00e589;
-  --primary-glow: rgba(0, 255, 157, 0.4);
-  --secondary: #00e5ff;
-  --accent: #70e000;
-}
-
-[data-theme="ai-quantum"] {
-  --primary: #c084fc;
-  --primary-hover: #a855f7;
-  --primary-glow: rgba(192, 132, 252, 0.4);
-  --secondary: #f472b6;
-  --accent: #38bdf8;
-}
-
-[data-theme="ai-solar"] {
-  --primary: #fbbf24;
-  --primary-hover: #f59e0b;
-  --primary-glow: rgba(251, 191, 36, 0.4);
-  --secondary: #f97316;
-  --accent: #34d399;
-}
-
-/* Global Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -83,52 +119,34 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 body {
   background-color: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.08) 0%, transparent 65%),
-    linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 45px 45px, 45px 45px;
   color: var(--text-main);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Ambient Neural Grid Light Flares */
-body::before {
-  content: '';
-  position: fixed;
-  top: -20%;
-  left: 10%;
-  width: 65vw;
-  height: 65vw;
-  background: radial-gradient(circle, var(--primary-glow) 0%, rgba(4, 7, 20, 0) 70%);
-  z-index: -1;
-  pointer-events: none;
-  filter: blur(100px);
-  opacity: 0.6;
-  animation: pulseGlow 8s ease-in-out infinite alternate;
+/* Background Grids & Ambient Lights */
+[data-theme-mode="dark"] body {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.08) 0%, transparent 65%),
+    linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 45px 45px, 45px 45px;
 }
 
-body::after {
-  content: '';
-  position: fixed;
-  bottom: -20%;
-  right: -10%;
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(4, 7, 20, 0) 70%);
-  z-index: -1;
-  pointer-events: none;
-  filter: blur(110px);
-  opacity: 0.5;
+[data-theme-mode="light"] body {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.08) 0%, transparent 65%),
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 45px 45px, 45px 45px;
 }
 
 /* Typography Base */
@@ -150,26 +168,22 @@ button {
   font-family: var(--font-body);
 }
 
-/* Scrollbar Customization - Cyber AI Theme */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 9px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 242, 254, 0.25);
+  background: var(--primary);
   border-radius: 5px;
   border: 2px solid var(--bg-dark);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-  box-shadow: 0 0 12px var(--primary);
 }
 
 /* Utility Classes */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 60%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -181,6 +195,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-glass);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-panel-interactive {
@@ -196,10 +211,11 @@ button {
 .glass-panel-interactive:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-glow);
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-glow), var(--shadow-glass);
 }
 
+/* Section Layout & Responsiveness */
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -228,46 +244,22 @@ button {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 16px;
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
   margin-bottom: 16px;
-  color: #ffffff;
 }
 
 .section-subtitle {
   color: var(--text-muted);
-  font-size: 1.125rem;
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
   max-width: 620px;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
 }
 
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-}
-
-/* Animations */
-@keyframes pulseGlow {
-  0% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-  100% { opacity: 0.4; transform: scale(1); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Primary Button Styling - Cyber Neon Gradient */
+/* Primary Button Styling */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -276,17 +268,21 @@ button {
   padding: 14px 28px;
   border-radius: var(--radius-full);
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: #040714;
+  color: #ffffff;
   font-weight: 800;
   font-size: 1rem;
   box-shadow: 0 4px 25px var(--primary-glow);
   transition: all 0.3s ease;
 }
 
+[data-theme-mode="dark"] .btn-primary {
+  color: #040714;
+}
+
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 32px var(--primary-glow);
-  filter: brightness(1.15);
+  filter: brightness(1.12);
 }
 
 .btn-secondary {
@@ -296,7 +292,7 @@ button {
   gap: 10px;
   padding: 14px 28px;
   border-radius: var(--radius-full);
-  background: rgba(0, 242, 254, 0.06);
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   color: var(--text-main);
   font-weight: 600;
@@ -306,11 +302,34 @@ button {
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 242, 254, 0.14);
+  background: var(--bg-card-hover);
   border-color: var(--border-glow);
+  color: var(--primary);
   transform: translateY(-2px);
 }
 
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
 
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
 
+/* Responsive Utilities */
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+  }
+}
 
+@media (min-width: 901px) {
+  .mobile-toggle {
+    display: none !important;
+  }
+}

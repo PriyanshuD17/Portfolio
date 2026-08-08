@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function NeuralBackground() {
+export default function NeuralBackground({ themeMode }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -18,25 +18,27 @@ export default function NeuralBackground() {
     };
     window.addEventListener('resize', handleResize);
 
-    // Generate Neural Nodes
-    const nodeCount = Math.floor(Math.min(width, height) / 18);
+    const nodeCount = Math.floor(Math.min(width, height) / 20);
     const nodes = [];
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 2 + 1.5
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1.2
       });
     }
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw Synaptic Connection Lines
-      const maxDistance = 140;
+      const isLight = themeMode === 'light';
+      const lineColor = isLight ? 'rgba(2, 132, 199, ' : 'rgba(0, 242, 254, ';
+      const nodeColor = isLight ? '#0284c7' : '#00f2fe';
+
+      const maxDistance = 130;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
@@ -44,18 +46,17 @@ export default function NeuralBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDistance) {
-            const alpha = (1 - dist / maxDistance) * 0.25;
+            const alpha = (1 - dist / maxDistance) * (isLight ? 0.15 : 0.22);
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `${lineColor}${alpha})`;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
       }
 
-      // Draw Nodes & Move
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
         node.x += node.vx;
@@ -66,9 +67,9 @@ export default function NeuralBackground() {
 
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#00f2fe';
-        ctx.shadowColor = '#00f2fe';
-        ctx.shadowBlur = 8;
+        ctx.fillStyle = nodeColor;
+        ctx.shadowColor = nodeColor;
+        ctx.shadowBlur = isLight ? 4 : 8;
         ctx.fill();
       }
 
@@ -81,7 +82,7 @@ export default function NeuralBackground() {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [themeMode]);
 
   return (
     <canvas
@@ -94,7 +95,7 @@ export default function NeuralBackground() {
         height: '100vh',
         pointerEvents: 'none',
         zIndex: 0,
-        opacity: 0.6
+        opacity: themeMode === 'light' ? 0.35 : 0.65
       }}
     />
   );

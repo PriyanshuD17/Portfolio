@@ -30,7 +30,7 @@ export default function Contact() {
           Seeking entry-level Software Engineer / Python Developer / AI Engineer roles. Feel free to connect for opportunities or technical inquiries!
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '36px' }}>
           {/* Left Side: Real Contact Information */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div className="glass-panel-interactive" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px' }}>

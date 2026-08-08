@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, Code2, Palette, Bot, Cpu } from 'lucide-react';
+import { Sparkles, Menu, X, Sun, Moon, Palette } from 'lucide-react';
 import priyanshuPhoto from '../assets/priyanshu.jpg';
 
-export default function Navbar({ activeTheme, setActiveTheme }) {
+export default function Navbar({ themeMode, setThemeMode, accentColor, setAccentColor }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [themeDropdown, setThemeDropdown] = useState(false);
+  const [accentDropdown, setAccentDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +15,11 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const themes = [
-    { id: 'ai-cyber', label: 'Cyber Neon', color: '#00f2fe' },
-    { id: 'ai-matrix', label: 'Matrix Emerald', color: '#00ff9d' },
-    { id: 'ai-quantum', label: 'Quantum Purple', color: '#c084fc' },
-    { id: 'ai-solar', label: 'Solar Amber', color: '#fbbf24' }
+  const accents = [
+    { id: 'cyan', label: 'Neon Cyan', color: '#00f2fe' },
+    { id: 'violet', label: 'Quantum Purple', color: '#c084fc' },
+    { id: 'emerald', label: 'Emerald Mint', color: '#00f5d4' },
+    { id: 'amber', label: 'Solar Amber', color: '#fbbf24' }
   ];
 
   const navLinks = [
@@ -38,16 +38,20 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
         right: 0,
         zIndex: 100,
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(4, 7, 20, 0.88)' : 'transparent',
+        background: scrolled
+          ? themeMode === 'dark'
+            ? 'rgba(4, 7, 20, 0.88)'
+            : 'rgba(255, 255, 255, 0.88)'
+          : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(0, 242, 254, 0.15)' : '1px solid transparent'
+        borderBottom: scrolled ? '1px solid var(--border-subtle)' : '1px solid transparent'
       }}
     >
       <div
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '16px 24px',
+          padding: '14px 20px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'
@@ -55,23 +59,21 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
       >
         {/* Brand Logo */}
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-          <div style={{ position: 'relative' }}>
-            <img
-              src={priyanshuPhoto}
-              alt="Priyanshu Dubey"
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                objectPosition: 'center 15%',
-                border: '2px solid var(--primary)',
-                boxShadow: '0 0 15px var(--primary-glow)'
-              }}
-            />
-          </div>
+          <img
+            src={priyanshuPhoto}
+            alt="Priyanshu Dubey"
+            style={{
+              width: '42px',
+              height: '42px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              objectPosition: 'center 15%',
+              border: '2px solid var(--primary)',
+              boxShadow: '0 0 12px var(--primary-glow)'
+            }}
+          />
           <div>
-            <span style={{ fontSize: '1.25rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text">
+            <span style={{ fontSize: '1.2rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text">
               PRIYANSHU DUBEY
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
@@ -80,8 +82,8 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  backgroundColor: '#00f2fe',
-                  boxShadow: '0 0 10px #00f2fe'
+                  backgroundColor: 'var(--primary)',
+                  boxShadow: '0 0 8px var(--primary)'
                 }}
               />
               Python Developer | AI Engineer
@@ -90,7 +92,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }} className="desktop-nav">
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -109,67 +111,87 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
           ))}
         </nav>
 
-        {/* Theme Picker & CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          {/* Theme Dropdown Toggle */}
+        {/* Controls: Mode Switch + Accent Picker + CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Light / Dark Mode Toggle Switch */}
+          <button
+            onClick={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')}
+            title={`Switch to ${themeMode === 'dark' ? 'Light' : 'Dark'} Mode`}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-subtle)',
+              color: 'var(--primary)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 0 12px var(--primary-glow)'
+            }}
+          >
+            {themeMode === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+
+          {/* Accent Color Picker Dropdown */}
           <div style={{ position: 'relative' }}>
             <button
-              onClick={() => setThemeDropdown(!themeDropdown)}
-              title="Change AI Cyber Palette"
+              onClick={() => setAccentDropdown(!accentDropdown)}
+              title="Change Accent Color"
               style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(0, 242, 254, 0.08)',
-                border: '1px solid var(--border-glow)',
-                color: 'var(--primary)',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-subtle)',
+                color: 'var(--text-main)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 0 15px var(--primary-glow)'
+                transition: 'all 0.3s ease'
               }}
             >
               <Palette size={20} />
             </button>
 
-            {themeDropdown && (
+            {accentDropdown && (
               <div
                 style={{
                   position: 'absolute',
                   right: 0,
-                  top: '50px',
-                  background: 'var(--bg-dark)',
+                  top: '48px',
+                  background: 'var(--bg-card)',
                   border: '1px solid var(--border-glow)',
                   borderRadius: 'var(--radius-md)',
                   padding: '12px',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.9), var(--shadow-glow)',
+                  boxShadow: 'var(--shadow-glass)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
-                  minWidth: '170px',
+                  minWidth: '165px',
                   zIndex: 110
                 }}
               >
-                <div style={{ fontSize: '0.75rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px', fontWeight: 700 }}>
-                  AI Cyber Palette
+                <div style={{ fontSize: '0.72rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 700, marginBottom: '2px' }}>
+                  Accent Color
                 </div>
-                {themes.map((t) => (
+                {accents.map((acc) => (
                   <button
-                    key={t.id}
+                    key={acc.id}
                     onClick={() => {
-                      setActiveTheme(t.id);
-                      setThemeDropdown(false);
+                      setAccentColor(acc.id);
+                      setAccentDropdown(false);
                     }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '10px',
-                      padding: '8px 12px',
+                      padding: '8px 10px',
                       borderRadius: 'var(--radius-sm)',
-                      background: activeTheme === t.id ? 'rgba(0, 242, 254, 0.12)' : 'transparent',
+                      background: accentColor === acc.id ? 'var(--primary-glow)' : 'transparent',
                       color: 'var(--text-main)',
-                      fontSize: '0.875rem',
+                      fontSize: '0.85rem',
                       textAlign: 'left'
                     }}
                   >
@@ -178,22 +200,22 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                         width: '12px',
                         height: '12px',
                         borderRadius: '50%',
-                        backgroundColor: t.color,
-                        boxShadow: `0 0 10px ${t.color}`
+                        backgroundColor: acc.color,
+                        boxShadow: `0 0 8px ${acc.color}`
                       }}
                     />
-                    {t.label}
+                    {acc.label}
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          <a href="#contact" className="btn-primary" style={{ padding: '10px 20px', fontSize: '0.875rem' }}>
-            <Sparkles size={16} /> Contact Me
+          <a href="#contact" className="btn-primary" style={{ padding: '10px 18px', fontSize: '0.85rem' }}>
+            <Sparkles size={16} /> Contact
           </a>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Drawer Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-toggle"
@@ -201,7 +223,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
               background: 'none',
               border: 'none',
               color: 'var(--text-main)',
-              padding: '8px'
+              padding: '6px'
             }}
           >
             {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -213,12 +235,13 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
       {mobileMenuOpen && (
         <div
           style={{
-            background: 'var(--bg-dark)',
+            background: 'var(--bg-card)',
+            backdropFilter: 'blur(20px)',
             borderBottom: '1px solid var(--border-glow)',
-            padding: '24px',
+            padding: '20px 24px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px'
+            gap: '14px'
           }}
         >
           {navLinks.map((link) => (
@@ -228,7 +251,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 color: 'var(--text-main)',
-                fontSize: '1.1rem',
+                fontSize: '1.05rem',
                 fontWeight: 600
               }}
             >

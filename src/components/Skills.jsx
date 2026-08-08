@@ -90,7 +90,7 @@ export default function Skills() {
 
         {/* Skills Meter Grid */}
         <div className="glass-panel" style={{ padding: '40px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px' }}>
             {currentCategory.skills.map((skill) => (
               <div key={skill.name}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
