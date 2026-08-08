@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Terminal, CheckCircle2, Cpu, Zap, Star, Mail, MapPin, Phone, FileText, Bot, Waves } from 'lucide-react';
+import { ArrowRight, Terminal, CheckCircle2, Cpu, Zap, Star, Mail, MapPin, Phone, FileText, Bot, Waves, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import priyanshuPhoto from '../assets/priyanshu.jpg';
 
 export default function Hero() {
   const titles = [
@@ -39,15 +40,52 @@ export default function Hero() {
             alignItems: 'center'
           }}
         >
-          {/* Left Column: Priyanshu's Intro */}
+          {/* Left Column: Priyanshu's Photo & Intro */}
           <div>
-            <div className="section-tag">
-              <Waves size={16} /> Python & Applied AI Engineer
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '24px' }}>
+              {/* Cropped Profile Image with Bioluminescent Glow Ring */}
+              <div style={{ position: 'relative' }}>
+                <img
+                  src={priyanshuPhoto}
+                  alt="Priyanshu Dubey"
+                  style={{
+                    width: '110px',
+                    height: '110px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 15%',
+                    border: '3px solid var(--primary)',
+                    boxShadow: '0 0 25px var(--primary-glow), var(--shadow-glass)'
+                  }}
+                />
+                <span
+                  style={{
+                    position: 'absolute',
+                    bottom: '4px',
+                    right: '4px',
+                    width: '16px',
+                    height: '16px',
+                    borderRadius: '50%',
+                    backgroundColor: '#00f5d4',
+                    border: '3px solid var(--bg-dark)',
+                    boxShadow: '0 0 10px #00f5d4'
+                  }}
+                />
+              </div>
+
+              <div>
+                <div className="section-tag" style={{ marginBottom: '8px' }}>
+                  <Waves size={14} /> Python & Applied AI Engineer
+                </div>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <MapPin size={14} color="var(--primary)" /> Vadodara, Gujarat, India
+                </div>
+              </div>
             </div>
 
             <h1
               style={{
-                fontSize: 'clamp(2.4rem, 5vw, 4rem)',
+                fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
                 fontWeight: 800,
                 lineHeight: 1.1,
                 marginBottom: '20px'
@@ -82,7 +120,7 @@ export default function Hero() {
             <p
               style={{
                 color: 'var(--text-muted)',
-                fontSize: '1.1rem',
+                fontSize: '1.05rem',
                 lineHeight: 1.7,
                 marginBottom: '32px',
                 maxWidth: '560px'
@@ -91,18 +129,8 @@ export default function Hero() {
               Motivated Computer Science graduate specializing in Python development and applied AI, with hands-on experience building conversational AI systems, voice synthesis engines (pyttsx3), NLP neural network models, and hardware IoT automation.
             </p>
 
-            {/* Quick Contact Chips */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '36px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                <MapPin size={16} color="var(--primary)" /> Vadodara, Gujarat 390021
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                <Phone size={16} color="var(--primary)" /> +91 83206 68030
-              </div>
-            </div>
-
             {/* CTA Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '40px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '36px' }}>
               <a href="#projects" className="btn-primary">
                 Flagship AI Project <ArrowRight size={18} />
               </a>
@@ -111,17 +139,14 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Social Links */}
+            {/* Direct Email Chip */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                Contact & Links:
-              </span>
               <a
                 href="mailto:priyanshudubey172004@gmail.com"
                 style={{
-                  padding: '8px 14px',
+                  padding: '8px 16px',
                   borderRadius: 'var(--radius-full)',
-                  background: 'rgba(255, 255, 255, 0.04)',
+                  background: 'rgba(0, 242, 254, 0.06)',
                   border: '1px solid var(--border-subtle)',
                   display: 'flex',
                   alignItems: 'center',
@@ -158,7 +183,7 @@ export default function Hero() {
                   fontSize: '0.875rem',
                   lineHeight: 1.6,
                   color: 'var(--text-main)',
-                  background: 'rgba(7, 9, 14, 0.8)',
+                  background: 'rgba(3, 8, 20, 0.85)',
                   padding: '20px',
                   borderRadius: 'var(--radius-sm)',
                   border: '1px solid var(--border-subtle)',
@@ -167,7 +192,7 @@ export default function Hero() {
                 }}
               >
                 <code>
-                  <span style={{ color: '#c084fc' }}>class</span> <span style={{ color: '#38bdf8' }}>HackerenceAI</span>:<br />
+                  <span style={{ color: '#c084fc' }}>class</span> <span style={{ color: '#00f2fe' }}>HackerenceAI</span>:<br />
                   &nbsp;&nbsp;<span style={{ color: '#c084fc' }}>def</span> <span style={{ color: '#fbbf24' }}>__init__</span>(self):<br />
                   &nbsp;&nbsp;&nbsp;&nbsp;self.voice = pyttsx3.init()<br />
                   &nbsp;&nbsp;&nbsp;&nbsp;self.model = GPT_BERT_NeuralEngine()<br />
@@ -175,7 +200,7 @@ export default function Hero() {
                   <br />
                   &nbsp;&nbsp;<span style={{ color: '#c084fc' }}>def</span> <span style={{ color: '#fbbf24' }}>listen_and_respond</span>(self, input_speech):<br />
                   &nbsp;&nbsp;&nbsp;&nbsp;intent = self.model.parse_nlp(input_speech)<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#34d399' }}>return</span> self.iot.execute(intent)
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#00f5d4' }}>return</span> self.iot.execute(intent)
                 </code>
               </pre>
 
@@ -185,7 +210,7 @@ export default function Hero() {
                   style={{
                     padding: '14px',
                     borderRadius: 'var(--radius-sm)',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: 'rgba(0, 242, 254, 0.03)',
                     border: '1px solid var(--border-subtle)',
                     display: 'flex',
                     alignItems: 'center',
@@ -203,7 +228,7 @@ export default function Hero() {
                   style={{
                     padding: '14px',
                     borderRadius: 'var(--radius-sm)',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: 'rgba(0, 242, 254, 0.03)',
                     border: '1px solid var(--border-subtle)',
                     display: 'flex',
                     alignItems: 'center',

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Menu, X, Code2, Palette, Waves, Compass } from 'lucide-react';
+import priyanshuPhoto from '../assets/priyanshu.jpg';
 
 export default function Navbar({ activeTheme, setActiveTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -54,21 +55,20 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
       >
         {/* Brand Logo */}
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-          <div
-            style={{
-              width: '42px',
-              height: '42px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#030814',
-              fontWeight: 'bold',
-              boxShadow: '0 0 20px var(--primary-glow)'
-            }}
-          >
-            <Waves size={22} />
+          <div style={{ position: 'relative' }}>
+            <img
+              src={priyanshuPhoto}
+              alt="Priyanshu Dubey"
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: 'center 15%',
+                border: '2px solid var(--primary)',
+                boxShadow: '0 0 12px var(--primary-glow)'
+              }}
+            />
           </div>
           <div>
             <span style={{ fontSize: '1.25rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }} className="gradient-text">

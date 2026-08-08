@@ -1,5 +1,6 @@
 import React from 'react';
 import { User, GraduationCap, Award, Briefcase, BookOpen, CheckCircle2, Code, Brain } from 'lucide-react';
+import priyanshuPhoto from '../assets/priyanshu.jpg';
 
 export default function About() {
   const certifications = [
@@ -22,14 +23,37 @@ export default function About() {
           Computer Science graduate specializing in Python development, Neural Networks, NLP, and Hardware/IoT Automation.
         </p>
 
-        {/* Profile Summary Card */}
+        {/* Profile Summary Card with Cropped Photo */}
         <div className="glass-panel" style={{ padding: '36px', marginBottom: '48px', borderLeft: '4px solid var(--primary)' }}>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Brain color="var(--primary)" size={24} /> Profile Summary
-          </h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.8 }}>
-            Motivated Computer Science graduate specializing in Python development and applied AI, with hands-on experience building a conversational AI system through progressive, multi-semester development. Skilled in Python, foundational Java and JavaScript, and core AI/ML concepts including NLP and neural networks. Strong project management, research, and communication skills. Seeking an entry-level Software Engineer / Python Developer / AI Engineer role.
-          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '32px', alignItems: 'center' }}>
+            <div style={{ textAlign: 'center' }}>
+              <img
+                src={priyanshuPhoto}
+                alt="Priyanshu Dubey"
+                style={{
+                  width: '160px',
+                  height: '160px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 15%',
+                  border: '3px solid var(--primary)',
+                  boxShadow: '0 0 30px var(--primary-glow), var(--shadow-glass)',
+                  margin: '0 auto 12px'
+                }}
+              />
+              <div style={{ fontWeight: 800, fontSize: '1.15rem', color: 'var(--text-main)' }}>Priyanshu Dubey</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--primary)' }}>Python Developer | AI Engineer</div>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Brain color="var(--primary)" size={24} /> Profile Summary
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.025rem', lineHeight: 1.8 }}>
+                Motivated Computer Science graduate specializing in Python development and applied AI, with hands-on experience building a conversational AI system through progressive, multi-semester development. Skilled in Python, foundational Java and JavaScript, and core AI/ML concepts including NLP and neural networks. Strong project management, research, and communication skills. Seeking an entry-level Software Engineer / Python Developer / AI Engineer role.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', marginBottom: '60px' }}>
