@@ -182,13 +182,14 @@ export default function Hero() {
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.875rem',
                   lineHeight: 1.6,
-                  color: 'var(--text-main)',
-                  background: 'rgba(3, 8, 20, 0.85)',
+                  color: '#e2e8f0',
+                  background: '#0f172a',
                   padding: '20px',
                   borderRadius: 'var(--radius-sm)',
-                  border: '1px solid var(--border-subtle)',
+                  border: '1px solid rgba(15, 23, 42, 0.1)',
                   overflowX: 'auto',
-                  marginBottom: '24px'
+                  marginBottom: '24px',
+                  boxShadow: '0 8px 24px rgba(15, 23, 42, 0.15)'
                 }}
               >
                 <code>

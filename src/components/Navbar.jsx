@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, Code2, Palette, Waves, Compass } from 'lucide-react';
+import { Sparkles, Menu, X, Code2, Palette, Sun } from 'lucide-react';
 import priyanshuPhoto from '../assets/priyanshu.jpg';
 
 export default function Navbar({ activeTheme, setActiveTheme }) {
@@ -16,10 +16,10 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
   }, []);
 
   const themes = [
-    { id: 'aquatic', label: 'Electric Aqua', color: '#00f2fe' },
-    { id: 'bioluminescent', label: 'Bioluminescent', color: '#00f5d4' },
-    { id: 'coral', label: 'Coral Reef', color: '#ff6b6b' },
-    { id: 'abyss', label: 'Abyss Indigo', color: '#3a86ff' }
+    { id: 'light-cyan', label: 'Ocean Cyan', color: '#0284c7' },
+    { id: 'light-indigo', label: 'Royal Indigo', color: '#4f46e5' },
+    { id: 'light-emerald', label: 'Fresh Emerald', color: '#059669' },
+    { id: 'light-coral', label: 'Sunset Coral', color: '#ea580c' }
   ];
 
   const navLinks = [
@@ -38,9 +38,10 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
         right: 0,
         zIndex: 100,
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(3, 8, 20, 0.88)' : 'transparent',
+        background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(0, 242, 254, 0.15)' : '1px solid transparent'
+        borderBottom: scrolled ? '1px solid rgba(15, 23, 42, 0.08)' : '1px solid transparent',
+        boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.04)' : 'none'
       }}
     >
       <div
@@ -80,8 +81,8 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  backgroundColor: '#00f2fe',
-                  boxShadow: '0 0 10px #00f2fe'
+                  backgroundColor: '#10b981',
+                  boxShadow: '0 0 8px #10b981'
                 }}
               />
               Python Developer | AI Engineer
@@ -97,7 +98,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
               href={link.href}
               style={{
                 color: 'var(--text-muted)',
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: '0.95rem',
                 transition: 'color 0.2s ease'
               }}
@@ -115,19 +116,19 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
           <div style={{ position: 'relative' }}>
             <button
               onClick={() => setThemeDropdown(!themeDropdown)}
-              title="Change Aquatic Accent Palette"
+              title="Change Light Palette"
               style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(0, 242, 254, 0.08)',
-                border: '1px solid var(--border-glow)',
+                background: '#ffffff',
+                border: '1px solid rgba(15, 23, 42, 0.12)',
                 color: 'var(--primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'all 0.2s ease',
-                boxShadow: '0 0 12px var(--primary-glow)'
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
               }}
             >
               <Palette size={20} />
@@ -139,11 +140,11 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                   position: 'absolute',
                   right: 0,
                   top: '50px',
-                  background: 'var(--bg-dark)',
-                  border: '1px solid var(--border-glow)',
+                  background: '#ffffff',
+                  border: '1px solid rgba(15, 23, 42, 0.12)',
                   borderRadius: 'var(--radius-md)',
                   padding: '12px',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.8), var(--shadow-glow)',
+                  boxShadow: '0 12px 30px rgba(15, 23, 42, 0.12)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
@@ -152,7 +153,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                 }}
               >
                 <div style={{ fontSize: '0.75rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px', fontWeight: 700 }}>
-                  Oceanic Palette
+                  Light Palette
                 </div>
                 {themes.map((t) => (
                   <button
@@ -167,7 +168,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                       gap: '10px',
                       padding: '8px 12px',
                       borderRadius: 'var(--radius-sm)',
-                      background: activeTheme === t.id ? 'rgba(0, 242, 254, 0.12)' : 'transparent',
+                      background: activeTheme === t.id ? 'rgba(2, 132, 199, 0.08)' : 'transparent',
                       color: 'var(--text-main)',
                       fontSize: '0.875rem',
                       textAlign: 'left'
@@ -179,7 +180,7 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
                         height: '12px',
                         borderRadius: '50%',
                         backgroundColor: t.color,
-                        boxShadow: `0 0 10px ${t.color}`
+                        boxShadow: `0 0 6px ${t.color}`
                       }}
                     />
                     {t.label}
@@ -213,8 +214,8 @@ export default function Navbar({ activeTheme, setActiveTheme }) {
       {mobileMenuOpen && (
         <div
           style={{
-            background: 'var(--bg-dark)',
-            borderBottom: '1px solid var(--border-glow)',
+            background: '#ffffff',
+            borderBottom: '1px solid rgba(15, 23, 42, 0.12)',
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',
